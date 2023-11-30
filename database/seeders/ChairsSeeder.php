@@ -18,7 +18,7 @@ class ChairsSeeder extends Seeder
                 $ten = $i+1;
                 $hang = 'A';
                 $idFor = 'c'.($i+1);
-                if ($i == 19) {
+                if ($i == 8) {
                     $class ='st_eco_second_row';
                 }else $class = '';
 
@@ -26,26 +26,26 @@ class ChairsSeeder extends Seeder
                 $ten = $i-22;
                 $hang = 'B';
                 $idFor = 'c'.($i+1);
-                if ($i-23 == 19) {
+                if ($i-23 == 8) {
                     $class ='st_eco_second_row';
                 }else $class = '';
             } elseif ($i >= 46 && $i <= 68) {
                 $ten = $i-45;
                 $hang = 'C';
                 $idFor = 'c'.($i+1);
-                if ($i-46 == 19) {
+                if ($i-46 == 8) {
                     $class ='st_eco_second_row';
                 }else $class = '';
             } elseif ($i >= 69 && $i < 93) {
                 $ten = $i-68;
                 $hang = 'D';
                 $idFor = 'c'.($i+1);
-                if ($i-69 == 19) {
+                if ($i-69 == 8) {
                     $class ='st_eco_second_row';
                 }else $class = '';
             }
             Chairs::create([
-                'PhongId' => 8,
+                'PhongId' => 6,
                 'Ten' => $ten,
                 'Hang' => $hang,
                 'idFor' => $idFor,

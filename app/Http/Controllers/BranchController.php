@@ -20,12 +20,12 @@ class BranchController extends Controller
     public function area($id){
         $showtime = view_showtime::findOrFail($id);
         session(['khuVuc' => $showtime->tenKhuvuc,'Ngay' => date('Y-m-d'), 'Gio' => '', 'chinhanhid' => '']);
-        return redirect()->route('chonchinhanh');
+        return redirect()->route('chonchinhanh', session('phimid'));
     }
     public function date($id){
         $showtime = view_showtime::findOrFail($id);
         session(['Ngay' => $showtime->Ngay, 'Gio' => '', 'chinhanhid' => '']);
-        return redirect()->route('chonchinhanh');
+        return redirect()->route('chonchinhanh', session('phimid'));
     }
     public function time($id){
         $showtime = view_showtime::findOrFail($id);

@@ -104,14 +104,7 @@ Author: Webstrot
 									</div> --}}
 								</div>
 							</div>
-							<div class="col-md-12">
-								<div class="st_cherity_btn float_left">
-									<ul>
-										<li><br><a  href="#"><i  class="flaticon-tickets"></i> &nbsp;tiến hành thanh toán</a>
-										</li>
-									</ul>
-								</div>
-							</div>
+
 						</div>
 					</div>
 				</div>
@@ -136,12 +129,18 @@ Author: Webstrot
 									</p> --}}
 								</div>
 								<div class="st_dtts_sb_h2 float_left">
-									<h3>Tổng cộng <span>{{ $total .'đ' }}</span></h3>
-									<h5>Số tiền phải trả <span>{{ $total .'đ' }}</span></h5>
+									<h3>Tổng cộng <span>{{ session('total') .'đ' }}</span></h3>
+									<h5>Số tiền phải trả <span>{{ session('total') .'đ' }}</span></h5>
 								</div>
 							</div>
 						</div>
 					</div>
+                    <div class="st_cherity_btn float_left">
+                        <ul>
+                            <li><br><a  href="#"><i  class="flaticon-tickets"></i> &nbsp;tiến hành thanh toán</a>
+                            </li>
+                        </ul>
+                    </div>
 				</div>
 			</div>
 		</div>
