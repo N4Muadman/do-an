@@ -16,12 +16,11 @@ return new class extends Migration
             $table->increments('Id');
             $table->unsignedInteger('KhachHangId');
             $table->unsignedInteger('LichChieuId');
-            $table->unsignedInteger('GheId');
-            $table->string('MaQR', 100);
-            $table->string('MoTa');
+            $table->string('MaQR');
+            $table->string('MoTa')->nullable();
             $table->dateTime('ThoiGiaDat')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->decimal('total', 10, 0);
             $table->foreign('KhachHangId')->references('Id')->on('userkhachhang')->onDelete('cascade');
-            $table->foreign('GheId')->references('Id')->on('ghe')->onDelete('cascade');
             $table->foreign('LichChieuId')->references('Id')->on('lichchieu')->onDelete('cascade');
             $table->timestamps();
         });

@@ -6,7 +6,7 @@
 @endsection
 
 @section('main')
-    	<!-- prs video top Start -->
+    	{{-- <!-- prs video top Start -->
 	<div class="prs_top_video_section_wrapper">
 		<div class="container">
 			<div class="row">
@@ -51,113 +51,48 @@
 			</div>
 		</div>
 	</div>
-	<!-- prs video top End -->
+	<!-- prs video top End --> --}}
 	<!-- kv slider wrapper Start -->
 	<div class="kv_main_slider_wrapper slider-area">
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
 			<div class="carousel-inner" role="listbox">
-				<div class="item active">
-					<div class="carousel-captions caption-1">
-						<div class="container">
-							<div class="st_slider_left_cont_main_wrapper">
-								<div class="content st_slider_left_contact">
-									<h3 data-animation="animated fadeInUp">ACTION / Adventure / Fantasy</h3>
-									<h2 data-animation="animated fadeInUp">ENGLISH, HINDI, TAMIL	</h2>
-									<h4 data-animation="animated fadeInUp">Aquaman <span>2d</span> <span>3d</span> <span>D 4DX</span> <span>Imax 3D</span></h4>
-									<div class="st_slider_list float_left">
-										<ul>
-											<li data-animation="animated fadeInUp"><i class="fa fa-calendar"></i> 14 Dec, 2022</li>
-											<li data-animation="animated fadeInUp"><i class="fa fa-clock-o"></i> 2 hrs 23 mins</li>
-											<li data-animation="animated fadeInUp"><i class="fa fa-heart"></i> 50,133 votes</li>
-										</ul>
-									</div>
-									<div class="prs_animate_btn1 prs_upcom_main_wrapper prs_third_slider_btn">
-										<ul>
-											<li data-animation="animated fadeInUp"><a href="movie_booking.html" class="button button--tamaya prs_upcom_main_btn" data-text="book now"><span>book now</span></a>
-										</li>
-										</ul>
-									</div>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="st_slider_right_cont_main_wrapper">
-								<div class="content">
-									<div class="st_slider_img_wrapper float_left">
-										<img src="images/index_III/01.jpg" alt="img">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="carousel-captions caption-2">
-						<div class="container">
-							<div class="st_slider_left_cont_main_wrapper">
-								<div class="content st_slider_left_contact">
-									<h3 data-animation="animated fadeInUp">ACTION / Adventure / Fantasy</h3>
-									<h2 data-animation="animated fadeInUp">ENGLISH, HINDI, TAMIL	</h2>
-									<h4 data-animation="animated fadeInUp">Aquaman <span>2d</span> <span>3d</span> <span>D 4DX</span> <span>Imax 3D</span></h4>
-									<div class="st_slider_list float_left">
-										<ul>
-											<li data-animation="animated fadeInUp"><i class="far fa-calendar-alt"></i> 14 Dec, 2022</li>
-											<li data-animation="animated fadeInUp"><i class="far fa-clock"></i> 2 hrs 23 mins</li>
-											<li data-animation="animated fadeInUp"><i class="fas fa-heart"></i> 50,133 votes</li>
-										</ul>
-									</div>
-									<div class="prs_animate_btn1 prs_upcom_main_wrapper prs_third_slider_btn">
-										<ul>
-											<li data-animation="animated fadeInUp"><a href="movie_booking.html" class="button button--tamaya prs_upcom_main_btn" data-text="book now"><span>book now</span></a>
-										</li>
-										</ul>
-									</div>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="st_slider_right_cont_main_wrapper">
-								<div class="content">
-									<div class="st_slider_img_wrapper float_left">
-										<img src="images/index_III/02.jpg" alt="img">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="carousel-captions caption-3">
-						<div class="container">
-							<div class="st_slider_left_cont_main_wrapper">
-								<div class="content st_slider_left_contact">
-									<h3 data-animation="animated fadeInUp">ACTION / Adventure / Fantasy</h3>
-									<h2 data-animation="animated fadeInUp">ENGLISH, HINDI, TAMIL	</h2>
-									<h4 data-animation="animated fadeInUp">Aquaman <span>2d</span> <span>3d</span> <span>D 4DX</span> <span>Imax 3D</span></h4>
-									<div class="st_slider_list float_left">
-										<ul>
-											<li data-animation="animated fadeInUp"><i class="far fa-calendar-alt"></i> 14 Dec, 2022</li>
-											<li data-animation="animated fadeInUp"><i class="far fa-clock"></i> 2 hrs 23 mins</li>
-											<li data-animation="animated fadeInUp"><i class="fas fa-heart"></i> 50,133 votes</li>
-										</ul>
-									</div>
-									<div class="prs_animate_btn1 prs_upcom_main_wrapper prs_third_slider_btn">
-										<ul>
-											<li data-animation="animated fadeInUp"><a href="movie_booking.html" class="button button--tamaya prs_upcom_main_btn" data-text="book now"><span>book now</span></a>
-										</li>
-										</ul>
-									</div>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="st_slider_right_cont_main_wrapper">
-								<div class="content">
-									<div class="st_slider_img_wrapper float_left">
-										<img src="images/index_III/03.jpg" alt="img">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                @foreach($movies->where('NgayKhoiChieu', '<=', date("Y-m-d") )->take(3) as $item)
+                    <div class="item ">
+                        <div class="carousel-captions caption-1">
+                            <div class="container">
+                                <div class="st_slider_left_cont_main_wrapper">
+                                    <div class="content st_slider_left_contact">
+                                        <h3 data-animation="animated fadeInUp">ACTION / Adventure / Fantasy</h3>
+                                        <h2 data-animation="animated fadeInUp">ENGLISH, HINDI, TAMIL	</h2>
+                                        <h4 data-animation="animated fadeInUp">Aquaman <span>2d</span> <span>3d</span> <span>D 4DX</span> <span>Imax 3D</span></h4>
+                                        <div class="st_slider_list float_left">
+                                            <ul>
+                                                <li data-animation="animated fadeInUp"><i class="fa fa-calendar"></i> 14 Dec, 2022</li>
+                                                <li data-animation="animated fadeInUp"><i class="fa fa-clock-o"></i> 2 hrs 23 mins</li>
+                                                <li data-animation="animated fadeInUp"><i class="fa fa-heart"></i> 50,133 votes</li>
+                                            </ul>
+                                        </div>
+                                        <div class="prs_animate_btn1 prs_upcom_main_wrapper prs_third_slider_btn">
+                                            <ul>
+                                                <li data-animation="animated fadeInUp"><a href="movie_booking.html" class="button button--tamaya prs_upcom_main_btn" data-text="book now"><span>book now</span></a>
+                                            </li>
+                                            </ul>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <div class="st_slider_right_cont_main_wrapper">
+                                    <div class="content">
+                                        <div class="st_slider_img_wrapper float_left">
+                                            <img src="images/index_III/01.jpg" alt="img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
 				<ol class="carousel-indicators">
 					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"><span class="number"></span>
 					</li>

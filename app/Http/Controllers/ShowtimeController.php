@@ -29,12 +29,14 @@ class ShowtimeController extends Controller
     }
     public function time($id){
         $showtime = view_showtime::findOrFail($id);
-        session(['Gio' => $showtime->GioBatDau,'tenChiNhanh' => $showtime->tenChinhanh , 'chinhanhid' => $showtime->chinhanhId]);
+        session(['Gio' => $showtime->GioBatDau,'tenChinhanh' => $showtime->tenChinhanh , 'chinhanhid' => $showtime->chinhanhId]);
         return redirect()->route('lichchieu');
     }
     public function movie($id){
         $showtime = view_showtime::findOrFail($id);
-        session(['tenPhim' => $showtime->tenPhim, 'imgPhim' => $showtime->imgPhim,'Thoilc' => $showtime->ThoiLuongChieu,'quocGia' => $showtime->QuocGia, 'phongId' => $showtime->PhongId, 'tenPhong' => $showtime->tenPhong,'tenChinhanh' => $showtime->tenChinhanh, 'lichchieuId' => $showtime->Id,'Gia' => $showtime->Gia]);
+        session(['tenPhim' => $showtime->tenPhim, 'imgPhim' => $showtime->imgPhim,'Thoilc' => $showtime->ThoiLuongChieu,
+        'quocGia' => $showtime->QuocGia, 'phongId' => $showtime->PhongId, 'tenPhong' => $showtime->tenPhong, 'lichchieuId' => $showtime->Id,
+        'Gia' => $showtime->Gia]);
         return redirect()->route('chonghe');
     }
 }

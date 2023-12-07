@@ -5,16 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BookTickets extends Model
+class DetailTicket extends Model
 {
-    protected $table='ve';
+    protected $table = ('chitietve');
     protected $fillable = [
-        'KhachHangId',
-        'LichChieuId',
-        'MaQR',
-        'MoTa',
-        'ThoiGiaDat',
-        'total',
+        'veId',
+        'gheId',
     ];
     use HasFactory;
 }

@@ -58,6 +58,9 @@ Route::post('ChooseChair', [chairsController::class, 'ChooseChair'])->name('Choo
 
 Route::get('dat-ve', [BookticketController::class, 'index'])->name('datve');
 
+Route::get('thanh-toan', [BookticketController::class, 'payment'])->name('payment');
+Route::get('ve-moi-dat', [BookticketController::class, 'newticket'])->name('newticket');
+
 Route::get('admins', [DashboardController::class, 'index']);
 
 Route::prefix('admins')->group(function () {

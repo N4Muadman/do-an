@@ -137,7 +137,7 @@ Author: Webstrot
 					</div>
                     <div class="st_cherity_btn float_left">
                         <ul>
-                            <li><br><a  href="#"><i  class="flaticon-tickets"></i> &nbsp;tiến hành thanh toán</a>
+                            <li><br><a  href="{{ route('payment') }}"><i  class="flaticon-tickets"></i> &nbsp;tiến hành thanh toán</a>
                             </li>
                         </ul>
                     </div>

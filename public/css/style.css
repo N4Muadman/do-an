@@ -9706,6 +9706,9 @@ display:inline-block;
 	float:left;
 	width:auto;
 }
+.st_bcc_teckt_bot_inner_img img{
+    height: 127px;
+}
 .st_bcc_teckt_bot_inner_img_cont{
 	float:left;
 	width:auto;
@@ -9766,6 +9769,7 @@ padding-top:10px;
     line-height: 25px;
 }
 .st_bcc_tecket_bottom_left_price_wrapper{
+    margin-top: 17px;
 	float:left;
 	width:calc(100% - 200px);
 }
