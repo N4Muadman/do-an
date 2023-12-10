@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.png') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/notification.css') }}" />
 
 </head>
 <body>
@@ -333,6 +335,22 @@
                         <span class="mdi mdi-format-line-spacing"></span>
                     </button>
                 </div>
+                @if(Session::has('notification'))
+                <div id="toast_notification">
+                    <div class="toast_notification toast_notification--success">
+                        <div class="toast_notification__icon">
+                            <i class="fas fa-solid fa-check"></i>
+                        </div>
+                        <div class="toast_notification__body">
+                            <h3 class="toast_notification__title">Thông báo</h3>
+                            <p class="toast_notification__msg">{{ session('notification') }}</p>
+                        </div>
+                        <div class="toast_notification__close">
+                            <i class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </nav>
             <!-- partial -->
             <div class="main-panel">

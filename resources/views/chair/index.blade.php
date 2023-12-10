@@ -41,6 +41,8 @@ Author: Webstrot
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}" />
 	<link rel="stylesheet" id="theme-color" type="text/css" href="#"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/notification.css') }}" />
 	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/png" href="images/header/favicon.ico" />
 </head>
@@ -61,7 +63,7 @@ Author: Webstrot
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="st_bt_top_back_btn st_bt_top_back_btn_seatl float_left">
-                            <a href="{{ url()->previous() }}"><i class="fas fa-long-arrow-alt-left"></i> &nbsp;Back</a>
+                            <a href="{{ route('lichchieu') }}"><i class="fas fa-long-arrow-alt-left"></i> &nbsp;Back</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -80,11 +82,21 @@ Author: Webstrot
         </div>
         <!-- st top header Start -->
         <!-- st seat Layout Start -->
-        @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{ Session::get('success') }}
-
+        @if(Session::has('notification'))
+        <div id="toast">
+            <div class="toast toast--error">
+                <div class="toast__icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="toast__body">
+                    <h3 class="toast__title">Thông báo</h3>
+                    <p class="toast__msg">{{ session('notification') }}</p>
+                </div>
+                <div class="toast__close">
+                    <i class="fa-regular fa-circle-xmark"></i>
+                </div>
             </div>
+        </div>
         @endif
         <div class="st_seatlayout_main_wrapper float_left">
             <div class="container container_seat">

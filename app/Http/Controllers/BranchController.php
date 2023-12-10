@@ -8,10 +8,8 @@ use App\Models\Movie;
 
 class BranchController extends Controller
 {
-    public function index($id){
+    public function index(){
         $showtime = View_showtime::where('TrangThai', '1')->where('Ngay', '>=', date("Y-m-d"))->orderBy('Ngay', 'asc')->get();
-        $movie = Movie::findOrFail($id);
-        session(['phimid' => $movie->Id, 'tenPhim' => $movie->Ten, 'imgPhim' => $movie->img,'Thoilc' => $movie->ThoiLuongChieu,'quocGia' => $movie->QuocGia]);
         if(!session()->exists(['Ngay', 'khuVuc'])) {
             session(['Ngay' => date('Y-m-d'), 'khuVuc' => '--- Chọn khu vực ---']);
         }

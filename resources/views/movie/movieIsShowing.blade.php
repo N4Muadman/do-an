@@ -120,7 +120,7 @@
                                                             </div>
                                                             <div class="prs_upcom_movie_content_box_inner_icon">
                                                                 <ul>
-                                                                    <li><a href="{{ route('chonchinhanh', $item->Id) }}"><i class="flaticon-cart-of-ecommerce"></i></a>
+                                                                    <li><a href="{{ route('movie.chooseMovie', $item->Id) }}"><i class="flaticon-cart-of-ecommerce"></i></a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -280,7 +280,7 @@
 								</div>
 								<div class="prs_upcom_movie_content_box_inner_icon">
 									<ul>
-										<li><a href="{{ route('chonchinhanh', $item->Id) }}"><i class="flaticon-cart-of-ecommerce"></i></a>
+										<li><a href="{{ route('movie.chooseMovie', $item->Id) }}"><i class="flaticon-cart-of-ecommerce"></i></a>
 										</li>
 									</ul>
 								</div>

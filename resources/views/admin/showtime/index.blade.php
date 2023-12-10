@@ -13,12 +13,6 @@
             </ol>
         </nav>
     </div>
-    @if(Session::has('success'))
-    <div class="alert alert-success">
-        {{ Session::get('success') }}
-
-    </div>
-    @endif
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">

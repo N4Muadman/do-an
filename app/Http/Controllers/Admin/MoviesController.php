@@ -57,7 +57,7 @@ class MoviesController extends Controller
             'NoiDung' => $request->input('NoiDung'),
             'status' => $request->input('status')
         ])){
-            return redirect()->route('movie.index')->with('success', 'Them moi thanh cong!');
+            return redirect()->route('movie.index')->with('notification', 'Bạn vừa thêm phim mới thành công!');
         }
     }
 
@@ -114,7 +114,7 @@ class MoviesController extends Controller
             'NoiDung' => $request->input('NoiDung'),
             'status' => $request->input('status')
         ])){
-            return redirect()->route('movie.index')->with('success', 'Sua thanh cong!');
+            return redirect()->route('movie.index')->with('notification', 'Sua thanh cong!');
         }
     }
 
@@ -127,6 +127,6 @@ class MoviesController extends Controller
         $movie->updateOrInsert([
             'status' => 0,
         ]);
-        return redirect()->route('movie.index')->with('success', 'Đã đổi phim '.$movie->Ten .' qua danh mục phim dừng chiếu');
+        return redirect()->route('movie.index')->with('notification', 'Đã đổi phim '.$movie->Ten .' qua danh mục phim dừng chiếu');
     }
 }

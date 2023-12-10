@@ -58,7 +58,7 @@ Author: Webstrot
 			</div>
 			<div class="prs_navi_left_main_wrapper">
 				<div class="prs_logo_main_wrapper">
-					<a href="index.html">
+					<a href="/">
 						<img src="{{ asset('images/header/logo.png') }}" alt="logo" />
 					</a>
 				</div>
@@ -139,12 +139,24 @@ Author: Webstrot
 			<div class="prs_navi_right_main_wrapper">
 
 				<div class="prs_top_login_btn_wrapper">
+
+                    @if(session()->exists('user_id'))
 					<div class="prs_animate_btn1">
+                        <div class="logo_user">
+                            <img class="logo_user_img" src="{{ asset('images/' .session('user_img')) }}" alt="">
+                        </div>
+						<ul>
+							<li></li>
+						</ul>
+					</div>
+                    @else
+                    <div class="prs_animate_btn1">
 						<ul>
 							<li><a href="#" class="button button--tamaya" data-text="Đăng nhập" data-toggle="modal" data-target="#myModal"><span>Đăng nhập</span></a>
 							</li>
 						</ul>
 					</div>
+                    @endif
 				</div>
 				<div class="product-heading">
 					<div class="con">
@@ -173,6 +185,22 @@ Author: Webstrot
             <div class="toast__body">
                 <h3 class="toast__title">Thông báo</h3>
                 <p class="toast__msg">{{ session('Registeredsuccess') }}</p>
+            </div>
+            <div class="toast__close">
+                <i class="fa-regular fa-circle-xmark"></i>
+            </div>
+        </div>
+    </div>
+    @endif
+    @if(Session::has('notification'))
+    <div id="toast">
+        <div class="toast toast--error">
+            <div class="toast__icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="toast__body">
+                <h3 class="toast__title">Thông báo</h3>
+                <p class="toast__msg">{{ session('notification') }}</p>
             </div>
             <div class="toast__close">
                 <i class="fa-regular fa-circle-xmark"></i>

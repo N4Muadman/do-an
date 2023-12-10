@@ -105,6 +105,15 @@ ul{
     -moz-transform: translate(-50%,-50%);
     -o-transform: translate(-50%,-50%);
 }
+.logo_user{
+    border: solid 3px #ffffff;
+    margin-left: 20px;
+    border-radius: 49%;
+}
+.logo_user_img{
+    width: 45px;
+    padding: 2px;
+}
 #status img {
 }
 #return-to-top {
@@ -3900,7 +3909,7 @@ font-weight:600;
 .prs_mcc_bro_title_wrapper{
 	float:left;
 	width:100%;
-	padding-top:60px;
+	/* padding-top:60px; */
 }
 .prs_mcc_bro_title_wrapper h2{
 	font-size:20px;

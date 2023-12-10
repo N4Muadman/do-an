@@ -38,7 +38,7 @@
                                         <div class="st_bcc_teckt_bot_inner_img_cont">
                                             <h4>{{ $item->tenPhim }}</h4>
                                             <h5>{{ $item->quocGia }}</h5>
-                                            <h3>{{ $item->ngayChieu .' - ' .$item->GioBatDau }}</h3>
+                                            <h3>Suất chiếu: {{ $item->ngayChieu .' - ' .$item->GioBatDau }}</h3>
                                             <h6>Chi nhánh: {{ $item->tenChinhanh }}</h6>
                                         </div>
                                         <div class="st_purchase_img">

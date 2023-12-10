@@ -47,7 +47,7 @@ class BookticketController extends Controller
         }
 
         $bookticket = BookTickets::create([
-            'KhachHangId' => 1,
+            'KhachHangId' => session('user_id'),
             'LichChieuId' => session('lichchieuId'),
             'MaQR' => $encodedContent,
             'total' => session('total'),
@@ -70,7 +70,7 @@ class BookticketController extends Controller
         return redirect()->route('newticket');
     }
     public function newticket(){
-        $newTicket = view_Ticket::where('veId', session('newTicketId'))->where('KhachHangId', 1)->get();
+        $newTicket = view_Ticket::where('veId', session('newTicketId'))->where('KhachHangId', session('user_id'))->get();
         return view('bookticket.newticket')->with('newTicket', $newTicket);
     }
 }

@@ -17,13 +17,16 @@ class LoginController extends Controller
 
         if ($user && Hash::check($enteredPassword, $user->MatKhau)) {
             // Mật khẩu nhập vào trùng khớp với mật khẩu đã được mã hóa trong cơ sở dữ liệu
+            session(['user_id' => $user->Id, 'user_img' => $user->Img]);
+            return redirect()->back();
 
-            // Thực hiện các hành động tiếp theo ở đây
-            // ...
         } else {
             // Mật khẩu không khớp hoặc người dùng không tồn tại
             return redirect()->back()->with(['ErrorNameLogin' => 'Tên đăng nhập hoặc mật khẩu không tồn tại, vui lòng nhập lại!']);
         }
-
+    }
+    public function Logout(){
+        session()->forget('user_id', 'user_img');
+        return redirect()->back();
     }
 }

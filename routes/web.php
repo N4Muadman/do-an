@@ -32,6 +32,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('phim-dang-chieu', [MovieController::class, 'movieIsShowing' ])->name('phimdangchieu');
 Route::get('phim-sap-chieu', [MovieController::class, 'upcomingMovie' ])->name('phimsapchieu');
 Route::get('chi-tiet-phim/{id}', [MovieController::class, 'details'])->name('movie.details');
+Route::get('chon-phim/{id}', [MovieController::class, 'chooseMovie'])->name('movie.chooseMovie');
 
 // đặt vé bằng cách chọn phim trước
 Route::prefix('lich-chieu')->group(function(){
@@ -47,8 +48,8 @@ Route::prefix('lich-chieu')->group(function(){
 });
 
 // đặt vé bằng cách chọn phim trước
-Route::prefix('chon-chi-nhanh')->group(function(){
-    Route::get('/{id}', [BranchController::class, 'index'])->name('chonchinhanh');
+Route::prefix('chon-chi-nhanh')->middleware('checkMovie')->group(function(){
+    Route::get('/', [BranchController::class, 'index'])->name('chonchinhanh');
 
     Route::get('area/{id}', [BranchController::class, 'area'])->name('khuvucLC');
 
@@ -60,13 +61,13 @@ Route::prefix('chon-chi-nhanh')->group(function(){
 
 
 // chọn ghế
-Route::get('chon-ghe', [chairsController::class, 'index'])->name('chonghe');
-Route::post('ChooseChair', [chairsController::class, 'ChooseChair'])->name('ChooseChair');
+Route::get('chon-ghe', [chairsController::class, 'index'])->middleware(['checkLogin','checkShowtimes'])->name('chonghe');
+Route::post('ChooseChair', [chairsController::class, 'ChooseChair'])->middleware(['checkLogin','checkShowtimes'])->name('ChooseChair');
 
 // Đặt vé
-Route::get('dat-ve', [BookticketController::class, 'index'])->name('datve');
-Route::get('thanh-toan', [BookticketController::class, 'payment'])->name('payment');
-Route::get('ve-moi-dat', [BookticketController::class, 'newticket'])->name('newticket');
+Route::get('dat-ve', [BookticketController::class, 'index'])->middleware(['checkChair','checkLogin'])->name('datve');
+Route::get('thanh-toan', [BookticketController::class, 'payment'])->middleware(['checkChair','checkLogin'])->name('payment');
+Route::get('ve-moi-dat', [BookticketController::class, 'newticket'])->middleware(['checkLogin'])->name('newticket');
 
 // Đăng kí , đăng nhập
 Route::post('dang-ki', [RegisterController::class, 'register'])->name('register');

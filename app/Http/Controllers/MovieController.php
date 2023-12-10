@@ -22,4 +22,9 @@ class MovieController extends Controller
         $movies = Movie::where('status' ,'1')->get();
         return view('movie.details')->with(['movie' => $movie, 'movies' => $movies]);
     }
+    public function chooseMovie($id){
+        $movie = Movie::findOrFail($id);
+        session(['phimid' => $movie->Id, 'tenPhim' => $movie->Ten, 'imgPhim' => $movie->img,'Thoilc' => $movie->ThoiLuongChieu,'quocGia' => $movie->QuocGia]);
+        return redirect()->route('chonchinhanh');
+    }
 }

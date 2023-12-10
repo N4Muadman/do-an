@@ -38,7 +38,7 @@ class ShowtimesController extends Controller
     public function store(Request $request)
     {
         if(Showtimes::create($request->all())){
-            return redirect()->route('showtime.index')->with('success', 'them moi lich chieu thanh cong!');
+            return redirect()->route('showtime.index')->with('notification', 'Bạn vừa thêm mới lịch chiếu thành công!');
         }
     }
 
@@ -92,7 +92,7 @@ class ShowtimesController extends Controller
             'GioBatDau'=>$request->GioBatDau,
             'TrangThai'=>$request->TrangThai,
         ]);
-        return redirect()->route('showtime.index')->with('success', 'chinh sua lich chieu thanh cong!');
+        return redirect()->route('showtime.index')->with('notification', 'chinh sua lich chieu thanh cong!');
         // $test = $showtime->update($request->all());
         // if($showtime->update($request->all())){
         //     return redirect()->route('showtime.index')->with('success', 'chinh sua lich chieu thanh cong!');

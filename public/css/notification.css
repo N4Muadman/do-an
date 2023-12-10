@@ -1,8 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-    margin: auto;
-}
+
 .toast{
     min-width: 400px;
     max-width: 450px;
@@ -14,7 +10,7 @@
     border-left: 4px solid;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
     transition: all linear .3s;
-    animation: sildeInLeft ease 1s , fadeOut linear 1s 3s forwards
+    animation: sildeInLeft ease 1s , fadeOut linear 1s 4s forwards
 }
 @keyframes sildeInLeft{
     from {
@@ -86,22 +82,5 @@
 }
 .toast--error .toast__icon{
     color: #ff623d;
-}
-.btn{
-    max-width: 100px;
-    min-width: 50px;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-.btn + .btn{
-    margin-top: 10px;
-}
-.btn--success{
-    background-color: #47d864;
-    color: #fff;
-}
-.btn--error{
-    background-color: #ff623d;
-    color: #fff;
 }
 

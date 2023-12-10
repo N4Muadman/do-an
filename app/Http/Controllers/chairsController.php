@@ -22,7 +22,7 @@ class chairsController extends Controller
     public function ChooseChair(Request $request){
         $checkboxValues = $request->input('chairs');
         if(!is_array($checkboxValues)){
-            return redirect()->route('chonghe')->with(['success' =>  'Bạn chưa chọn ghế, vui lòng lại ghế!']);
+            return redirect()->route('chonghe')->with(['notification' =>  'Bạn chưa chọn ghế, vui lòng lại ghế trước khi thanh toán!']);
         }
         $booktickets = view_Ticket::where('lichchieuId', session('lichchieuId'))->get();
         // Kiểm tra xem checkbox nào đã được chọn
@@ -40,7 +40,7 @@ class chairsController extends Controller
                 }
 
                 if ($found) {
-                    return redirect()->route('chonghe')->with(['success' => 'Ghế ' . $value . ' đã được chọn, vui lòng chọn ghế khác!']);
+                    return redirect()->route('chonghe')->with(['notification' => 'Ghế ' . $value . ' đã được chọn, vui lòng chọn ghế khác!']);
                 } else {
                     $chairsValues[] = $value;
                 }
