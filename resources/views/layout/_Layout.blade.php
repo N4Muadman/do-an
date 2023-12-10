@@ -33,6 +33,9 @@ Author: Webstrot
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/nice-select.css') }}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/venobox.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style4.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/notification.css') }}" />
     @yield('styles')
 	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/png" href="{{ asset('images/header/favicon.ico') }}" />
@@ -160,6 +163,23 @@ Author: Webstrot
 			</div>
 		</div>
 	</div>
+
+    @if(Session::has('Registeredsuccess'))
+    <div id="toast">
+        <div class="toast toast--success">
+            <div class="toast__icon">
+                <i class="fas fa-solid fa-check"></i>
+            </div>
+            <div class="toast__body">
+                <h3 class="toast__title">Thông báo</h3>
+                <p class="toast__msg">{{ session('Registeredsuccess') }}</p>
+            </div>
+            <div class="toast__close">
+                <i class="fa-regular fa-circle-xmark"></i>
+            </div>
+        </div>
+    </div>
+    @endif
 	<!-- prs navigation End -->
     @yield('main')
 
@@ -348,88 +368,124 @@ Author: Webstrot
 		</div>
 	</div>
 	<!-- prs footer Wrapper End -->
+
 	<!-- st login wrapper Start -->
-	<div class="modal fade st_pop_form_wrapper" id="myModal" role="dialog">
+	<div  @if(Session::has('ErrorNameLogin')) class="modal fade st_pop_form_wrapper in " style="display: block;" @else class="modal fade st_pop_form_wrapper" @endif  id="myModal" role="dialog" >
 		<div class="modal-dialog">
-			<div class="modal-content">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<div class="st_pop_form_heading_wrapper float_left">
-					<h3>Log in</h3>
-				</div>
-				<div class="st_profile_input float_left">
-					<label>Email / Mobile Number</label>
-					<input type="text">
-				</div>
-				<div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-					<input type="password" placeholder="Password">
-				</div>
-				<div class="st_form_pop_fp float_left">
-					<h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Forgot Password?</a></h3>
-				</div>
-				<div class="st_form_pop_login_btn float_left">	<a href="https://webstrot.com/html/moviepro/html/page-1-7_profile_settings.html">LOGIN</a>
-				</div>
-				<div class="st_form_pop_or_btn float_left">
-					<h4>or</h4>
-				</div>
-				<div class="st_form_pop_facebook_btn float_left">	<a href="#"> Connect with Facebook</a>
-				</div>
-				<div class="st_form_pop_gmail_btn float_left">	<a href="#"> Connect with Google</a>
-				</div>
-				<div class="st_form_pop_signin_btn float_left">
-					<h4>Don’t have an account? <a href="#" data-toggle="modal" data-target="#myModa3" target="_blank">Sign Up</a></h4>
-					<h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
-				</div>
-			</div>
+			<form action="{{ route('login') }}" method="post">
+                @csrf <!-- CSRF protection -->
+                <div class="modal-content">
+                    @if(Session::has('ErrorNameLogin')) <a class="close" href="{{ URL::previous() }}">&times;</a>
+                    @else
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     @endif
+                    <div class="st_pop_form_heading_wrapper float_left">
+                        <h3>Đăng nhập</h3>
+                    </div>
+                    <div class="st_profile_input float_left">
+                        @if(Session::has('ErrorNameLogin'))
+                        <h5 style="color: firebrick">
+                            {{ Session::get('ErrorNameLogin') }}
+                        </h5>
+                        @endif
+                        <label>Tên đăng nhập</label>
+                        <input type="text" placeholder="Nhập tên đăng nhập" name="tendangnhap" required>
+                    </div>
+                    <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                        <input type="password" placeholder="Nhập mật khẩu" name="matkhau" required>
+                    </div>
+                    <div class="st_form_pop_fp float_left">
+                        <h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Quên mật khẩu?</a></h3>
+                    </div>
+                    <div class="st_form_pop_login_btn float_left">	<button type="submit">Đăng nhập</button>
+                    </div>
+                    <div class="st_form_pop_or_btn float_left">
+                        <h4>hoac</h4>
+                    </div>
+                    <div class="st_form_pop_facebook_btn float_left">	<a href="#"> Đăng nhập bằng Facebook</a>
+                    </div>
+                    <div class="st_form_pop_gmail_btn float_left">	<a href="#"> Đăng nhập bằng Google</a>
+                    </div>
+                    <div class="st_form_pop_signin_btn float_left">
+                        <h4>Bạn chưa có tài khoản? <a href="#" data-toggle="modal" data-target="#myModa3" target="_blank">Đăng kí</a></h4>
+                        <h5>Tôi đồng ý với <a href="#">Điều khoản & điều kiện</a> & <a href="#">Chính sách riêng tư</a></h5>
+                    </div>
+                </div>
+            </form>
 		</div>
 	</div>
 	<div class="modal fade st_pop_form_wrapper" id="myModa2" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
-					<h3>Forgot Password</h3>
-					<p>We can help! All you need to do is enter your email ID and follow the instructions!</p>
-				</div>
-				<div class="st_profile_input float_left">
-					<label>Email Address</label>
-					<input type="text">
-				</div>
-				<div class="st_form_pop_fpass_btn float_left">	<a href="#">Verify</a>
-				</div>
-			</div>
-		</div>
+		<form action="" method="post">
+            @csrf <!-- CSRF protection -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="st_pop_form_heading_wrapper st_pop_form_heading_wrapper_fpass float_left">
+                        <h3>Quên mật khẩu</h3>
+                        <p>Chúng tôi có thể giúp! Tất cả những gì bạn cần làm là nhập ID email của bạn và làm theo hướng dẫn!</p>
+                    </div>
+                    <div class="st_profile_input float_left">
+                        <label>Email của bạn</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="st_form_pop_fpass_btn float_left">	<a href="#">Xác minh</a>
+                    </div>
+                </div>
+            </div>
+        </form>
 	</div>
-	<div class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<div class="st_pop_form_heading_wrapper float_left">
-					<h3>Sign Up</h3>
-				</div>
-				<div class="st_profile_input float_left">
-					<label>Email / Mobile Number</label>
-					<input type="text">
-				</div>
-				<div class="st_profile__pass_input st_profile__pass_input_pop float_left">
-					<input type="password" placeholder="Password">
-				</div>
-				<div class="st_form_pop_fp float_left">
-					<h3><a href="#" data-toggle="modal" data-target="#myModa2" target="_blank">Forgot Password?</a></h3>
-				</div>
-				<div class="st_form_pop_login_btn float_left">	<a href="https://webstrot.com/html/moviepro/html/page-1-7_profile_settings.html">LOGIN</a>
-				</div>
-				<div class="st_form_pop_or_btn float_left">
-					<h4>or</h4>
-				</div>
-				<div class="st_form_pop_facebook_btn float_left">	<a href="#"><i class="fab fa-facebook-f"></i> Connect with Facebook</a>
-				</div>
-				<div class="st_form_pop_gmail_btn float_left">	<a href="#"><i class="fab fa-google-plus-g"></i> Connect with Google</a>
-				</div>
-				<div class="st_form_pop_signin_btn st_form_pop_signin_btn_signup float_left">
-					<h5>I agree to the <a href="#">Terms & Conditions</a> & <a href="#">Privacy Policy</a></h5>
-				</div>
-			</div>
-		</div>
+	<div @if(Session::has('ErrorNameRg') || Session::has('ErrorEmailRg')) class="modal fade st_pop_form_wrapper in " style="display: block;" @else class="modal fade st_pop_form_wrapper" @endif class="modal fade st_pop_form_wrapper" id="myModa3" role="dialog">
+		<form action="{{ route('register') }}" method="post" id="register">
+            @csrf <!-- CSRF protection -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    @if(Session::has('ErrorNameRg') || Session::has('ErrorEmailRg')) <a class="close" href="{{ URL::previous() }}">&times;</a>
+                    @else
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     @endif
+                    <div class="st_pop_form_heading_wrapper float_left">
+                        <h3>Đăng kí</h3>
+                    </div>
+                    <div class="st_profile_input float_left">
+                        <label>Tên đăng nhập</label>
+                        <input type="text" name="tendangnhap" placeholder="Nhập tên đăng nhập" required>
+                        @if(Session::has('ErrorNameRg'))
+                        <h5 style="color: firebrick">
+                            {{ Session::get('ErrorNameRg') }}
+                        </h5>
+                        @endif
+                    </div>
+                    <div class="st_profile_input float_left">
+                        <label>Email</label>
+                        <input type="text" name="email" placeholder="Nhập email" required>
+                        @if(Session::has('ErrorEmailRg'))
+                        <h5 style="color: firebrick">
+                            {{ Session::get('ErrorEmailRg') }}
+                        </h5>
+                        @endif
+                    </div>
+                    <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                        <input type="password" placeholder="Mật khẩu" name="matkhau" id="password" required>
+                    </div>
+                    <div class="st_profile__pass_input st_profile__pass_input_pop float_left">
+                        <input type="password" placeholder="Nhập lại mật khẩu" id="confirmPassword"  required>
+                        <h5 style="color: firebrick" id="message"></h5>
+                    </div>
+                    <div class="st_form_pop_login_btn float_left">	<button class="btn_login" type="submit">Đăng kí</button>
+                    </div>
+                    <div class="st_form_pop_or_btn float_left">
+                        <h4>hoac</h4>
+                    </div>
+                    <div class="st_form_pop_facebook_btn float_left">	<a href="#"><i class="fab fa-facebook-f"></i> Đăng nhập bằng Facebook</a>
+                    </div>
+                    <div class="st_form_pop_gmail_btn float_left">	<a href="#"><i class="fab fa-google-plus-g"></i> Đăng nhập bằng Google</a>
+                    </div>
+                    <div class="st_form_pop_signin_btn st_form_pop_signin_btn_signup float_left">
+                        <h5>Tôi đồng ý với <a href="#">Điều khoản & điều kiện</a> & <a href="#">Chính sách riêng tư</a></h5>
+                    </div>
+                </div>
+            </div>
+        </form>
 	</div>
 	<!-- st login wrapper End -->
 	<!--main js file start-->
@@ -445,6 +501,7 @@ Author: Webstrot
 	<script src="{{ asset('js/venobox.min.js')}}"></script>
 	<script src="{{ asset('js/smothscroll_part1.js')}}"></script>
 	<script src="{{ asset('js/smothscroll_part2.js')}}"></script>
+	<script src="{{ asset('js/register.js')}}"></script>
     @yield('script')
 	<!--main js file end-->
 </body>

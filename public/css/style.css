@@ -9965,6 +9965,7 @@ letter-spacing: 0;
     -moz-transition: all 0.5s;
     transition: all 0.5s;
 }
+
 .st_form_pop_login_btn a:hover {
     background: #ff4444;
     color: #fff;
@@ -9982,8 +9983,7 @@ letter-spacing: 0;
 }
 .st_form_pop_or_btn h4{
 	display:inline-block;
-	width:30px;
-	height:30px;
+    padding: 2px 10px;
 	background: #ff4444;
 	line-height:30px;
 	text-align:center;

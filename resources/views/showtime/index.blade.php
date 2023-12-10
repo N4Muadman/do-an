@@ -6,9 +6,6 @@
 
 
 @section('main')
-
-
-
 	<!-- st slider rating wrapper Start -->
 	<div class="st_slider_rating_main_wrapper float_left">
 		<div class="container">

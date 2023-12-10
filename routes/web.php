@@ -11,6 +11,9 @@ use App\Http\Controllers\ShowtimeController;
 use App\Http\Controllers\chairsController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\BookticketController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,14 +26,14 @@ use App\Http\Controllers\BookticketController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// hiển thị phim
 Route::get('phim-dang-chieu', [MovieController::class, 'movieIsShowing' ])->name('phimdangchieu');
-
 Route::get('phim-sap-chieu', [MovieController::class, 'upcomingMovie' ])->name('phimsapchieu');
-
 Route::get('chi-tiet-phim/{id}', [MovieController::class, 'details'])->name('movie.details');
 
+// đặt vé bằng cách chọn phim trước
 Route::prefix('lich-chieu')->group(function(){
     Route::get('/', [ShowtimeController::class, 'index'])->name('lichchieu');
 
@@ -42,6 +45,8 @@ Route::prefix('lich-chieu')->group(function(){
 
     Route::get('movie/{id}', [ShowtimeController::class, 'movie'])->name('movie');
 });
+
+// đặt vé bằng cách chọn phim trước
 Route::prefix('chon-chi-nhanh')->group(function(){
     Route::get('/{id}', [BranchController::class, 'index'])->name('chonchinhanh');
 
@@ -53,16 +58,22 @@ Route::prefix('chon-chi-nhanh')->group(function(){
 
 });
 
+
+// chọn ghế
 Route::get('chon-ghe', [chairsController::class, 'index'])->name('chonghe');
 Route::post('ChooseChair', [chairsController::class, 'ChooseChair'])->name('ChooseChair');
 
+// Đặt vé
 Route::get('dat-ve', [BookticketController::class, 'index'])->name('datve');
-
 Route::get('thanh-toan', [BookticketController::class, 'payment'])->name('payment');
 Route::get('ve-moi-dat', [BookticketController::class, 'newticket'])->name('newticket');
 
-Route::get('admins', [DashboardController::class, 'index']);
+// Đăng kí , đăng nhập
+Route::post('dang-ki', [RegisterController::class, 'register'])->name('register');
+Route::post('dang-nhap', [LoginController::class, 'Login'])->name('login');
 
+// Admin
+Route::get('admins', [DashboardController::class, 'index']);
 Route::prefix('admins')->group(function () {
     Route::resource('movie', movieadmin::class);
     Route::put('movie/changeStatus/{id}', [movieadmin::class, 'changeStatus'])->name('movie.changeStatus');

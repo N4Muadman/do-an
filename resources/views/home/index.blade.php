@@ -1,7 +1,6 @@
 @extends('layout._Layout')
 
 @section('styles')
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/style4.css') }}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/responsive4.css') }}" />
 @endsection
 
@@ -205,12 +204,6 @@
 																	<i class="fa fa-star"></i>
 																	<i class="fa fa-star-o"></i>
 																	<i class="fa fa-star-o"></i>
-																</div>
-																<div class="prs_upcom_movie_content_box_inner_icon">
-																	<ul>
-																		<li><a href="{{ route('chonchinhanh', $item->Id) }}"><i class="flaticon-cart-of-ecommerce"></i></a>
-																		</li>
-																	</ul>
 																</div>
 															</div>
 														</div>

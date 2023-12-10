@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('userkhachhang', function (Blueprint $table) {
             $table->increments('Id');
             $table->string('TenDangNhap', 50);
-            $table->string('MatKhau', 50);
+            $table->string('MatKhau', 255);
             $table->string('Email', 50);
-            $table->string('HoTen', 50);
-            $table->string('SDT', 20);
+            $table->string('HoTen', 50)->nullable();
+            $table->string('SDT', 20)->nullable();
             $table->boolean('IsActive');
             $table->string('Img', 50);
+            $table->integer('role');
             $table->timestamps();
         });
     }
