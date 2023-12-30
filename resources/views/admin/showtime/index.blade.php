@@ -44,7 +44,7 @@
                                     <td>
                                         <a type="button" href="{{ route('showtime.show', $item->Id) }}" class="btn btn-outline-secondary btn-rounded " title="Chi tiết"><i style="margin-top: 30px" class="mdi mdi-alert-octagon text-success"></i></a>
                                         <a href="{{ route('showtime.edit', $item->Id) }}" type="button" class="btn btn-danger btn-rounded">Chỉnh Sửa</a>
-                                        <button type="button" onclick="if (confirm('Bạn có muốn đổi danh mục Phim đang chiếu sang Phim dừng chiếu không?') == true) { location.href = '{{ route('movie.changeStatus', $item->Id) }}' }" class="btn btn-warning  btn-rounded">Đổi danh mục</button>
+                                        <button type="button"  class="btn btn-warning  btn-rounded">Đổi danh mục</button>
                                     </td>
                                 </tr>
                             @endforeach

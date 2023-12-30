@@ -728,6 +728,23 @@ $(window).load(function() {
         }
       });
 
+    $("#logo_user").click(function(event) {
+        // Hiển thị phần tử B khi click vào phần tử A
+        $("#individual").show();
+        // Ngừng sự kiện click không lan truyền lên các phần tử cha
+        event.stopPropagation();
+      });
+
+      // Sử dụng sự kiện click trên body để ẩn phần tử B khi click vào các phần tử không phải A
+      $("body").on("click", function(event) {
+        // Kiểm tra xem phần tử được click có ID không phải là "a"
+        if (event.target.id !== "logo_user") {
+          // Ẩn đi phần tử B khi click vào bất kỳ phần tử nào không phải A
+          $("#individual").hide();
+        }
+    });
+
+
 });
 
 

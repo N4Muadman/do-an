@@ -109,10 +109,25 @@ ul{
     border: solid 3px #ffffff;
     margin-left: 20px;
     border-radius: 49%;
+    cursor: pointer;
 }
 .logo_user_img{
     width: 45px;
     padding: 2px;
+}
+.individual{
+    display: none ;
+    position: absolute;
+    width: 220px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 2px 0px;
+    margin-top: 10px;
+}
+.individual a:hover{
+    color: #ff4444;
 }
 #status img {
 }

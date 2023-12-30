@@ -44,12 +44,12 @@
                     <div class="profile-desc">
                         <div class="profile-pic">
                             <div class="count-indicator">
-                                <img class="img-xs rounded-circle " src="{{ asset('admin/assets/images/faces/face15.jpg') }}" alt="">
+                                <img class="img-xs rounded-circle " src="{{ asset('images/'.session('user_admin_img')) }}" alt="">
                                 <span class="count bg-success"></span>
                             </div>
                             <div class="profile-name">
-                                <h5 class="mb-0 font-weight-normal">Ten admin</h5>
-                                <span>Quản trị viên số 1</span>
+                                <h5 class="mb-0 font-weight-normal">{{ session('user_admin_name') }}</h5>
+                                <span>Quản trị viên </span>
                             </div>
                         </div>
                         <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -115,8 +115,8 @@
                     </a>
                     <div class="collapse" id="ghe">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('showtime.index') }}">Tất cả phòng chiếu</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('showtime.create') }}">Thêm phòng chiếu</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('showtime.index') }}">Tất cả lịch chiếu</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('showtime.create') }}">Thêm lịch chiếu</a></li>
                         </ul>
                     </div>
                 </li>
@@ -125,22 +125,16 @@
                         <span class="menu-icon">
                             <i class="mdi mdi-home"></i>
                         </span>
-                        <span class="menu-title">Quản Lý Phòng</span>
+                        <span class="menu-title">Quản Lý người dùng</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="room">
                         <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.user') }}">Tất cả khách hàng</a></li>
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="pages/charts/chartjs.html">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-seat-recline-normal"></i>
-                        </span>
-                        <span class="menu-title">Quản lý ghế</span>
-                    </a>
-                </li>
+
             </ul>
         </nav>
 
@@ -297,8 +291,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                                 <div class="navbar-profile">
-                                    <img class="img-xs rounded-circle" src="{{ asset('admin/assets/images/faces/face15.jpg') }}" alt="">
-                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">@Functions._UserNameAdmin</p>
+                                    <img class="img-xs rounded-circle" src="{{ asset('images/' .session('user_admin_img')) }}" alt="">
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ session('user_admin_name') }}</p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                                 </div>
                             </a>
@@ -316,7 +310,7 @@
                                     </div>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item" href="/admin/login/logout">
+                                <a class="dropdown-item preview-item" href="{{ route('admin.logout') }}">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-dark rounded-circle">
                                             <i class="mdi mdi-logout text-danger"></i>

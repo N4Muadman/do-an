@@ -163,7 +163,7 @@
                                                                 </p>
                                                                 <h4>{{ $item->DaoDien }}</h4>
                                                             </div>
-                                                            <div class="prs_mcc_list_right_cont_wrapper">	<a href="#"><i class="flaticon-cart-of-ecommerce"></i></a>
+                                                            <div class="prs_mcc_list_right_cont_wrapper">	<a href="{{ route('chonchinhanh', $item->Id) }}"><i class="flaticon-cart-of-ecommerce"></i></a>
                                                             </div>
                                                             <div class="prs_mcc_list_bottom_cont_wrapper">
                                                                 <p>{{ $item->NoiDung }}</p>

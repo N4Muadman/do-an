@@ -16,7 +16,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="st_video_slider_inner_wrapper float_left">
+					<div class="st_video_slider_inner_wrapper float_left" style="background: url({{ asset('images/' .$movie->img)  }}) 50% 0 repeat-y;">
 						<div class="st_video_slider_overlay"></div>
 						<div class="st_video_slide_sec float_left">
 							<a rel='external' href='https://www.youtube.com/watch?v=lwIRMsPRqbM' title='title' class="test-popup-link">
@@ -163,43 +163,11 @@
 					<div class="st_indx_slider_main_container float_left">
 						<div class="row">
 							<div class="col-md-12">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="ne_busness_main_slider_wrapper float_left">
-											<div class="ne_recent_heading_main_wrapper ne_recent_heading_main_wrapper_index_II float_left">
-												<h2>câu chuyện xu hướng</h2>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="st_md_ts_main_sec float_left">
-											<img src="{{ asset('images/content/md1.png') }}" alt="img">
-											<p><a href="#">Aquaman: đánh giá phim - Tạo nên một bộ phim mới mẻ..</a>
-											</p>	<span>14 tháng 12</span>
-										</div>
-									</div>
-									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="st_md_ts_main_sec float_left">
-											<img src="{{ asset('images/content/md2.png') }}" alt="img">
-											<p><a href="#">Đây là bằng chứng cho thấy sự cường điệu là thật đối với James ...</a>
-											</p>	<span>25 tháng 12</span>
-										</div>
-									</div>
-									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="st_md_ts_main_sec float_left">
-											<img src="{{ asset('images/content/md3.png') }}" alt="img">
-											<p><a href="#">Dàn diễn viên hoành tráng Aquaman chắc chắn sẽ tạo nên...</a>
-											</p>	<span>28 tháng 12</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12">
 								<div class="prs_upcome_tabs_wrapper prs_upcome_tabs_wrapper_mss float_left">
 									<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#home" aria-controls="best" role="tab" data-toggle="tab">Bản tóm tắt</a>
 							</li>
-							<li role="presentation"><a href="#menu2" aria-controls="trand" role="tab" data-toggle="tab">Đằng sau hồi trường</a>
+							<li role="presentation"><a href="#menu2" aria-controls="trand" role="tab" data-toggle="tab">Bình luận</a>
 							</li>
 						</ul>
 								</div>
@@ -214,130 +182,10 @@
 													<p>{{ $movie->NoiDung }}</p>
 												</div>
 											</div>
-											<div class="col-md-12">
-												<div class="st_md_summ_client_slider float_left">
-													<p>CAST</p>
-													<div class="owl-carousel owl-theme">
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{{ asset('images/content/c1.jpg') }}" alt="img">
-																<h4><a href="#">Jason Momoa</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{{ asset('images/content/c2.jpg') }}" alt="img">
-																<h4><a href="#">Nicole Kidman</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{{ asset('images/content/c3.jpg') }}" alt="img">
-																<h4><a href="#">Willem Dafoe</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{{ asset('images/content/c4.jpg') }}" alt="img">
-																<h4><a href="#">Amber Heard</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="st_md_summ_client_slider float_left">
-													<p>Crew</p>
-													<div class="owl-carousel owl-theme">
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{{ asset('images/content/c5.jpg') }}" alt="img">
-																<h4><a href="#">James Wan.</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{{ asset('images/content/c6.jpg') }}" alt="img">
-																<h4><a href="#">Peter Safran</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{{ asset('images/content/c7.jpg') }}" alt="img">
-																<h4><a href="#">Rob Cowan</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-														<div class="item">
-															<div class="st_summ_slider_cont float_left">
-																<img src="{{ asset('images/content/c8.jpg') }}" alt="img">
-																<h4><a href="#">Geoff Johns</a></h4>
-																<h5>Actor</h5>
-																<h6>As Arthur</h6>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
 										</div>
 									</div>
 									<div id="menu2" class="tab-pane fade">
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{{ asset('images/content/movie_single/sc1.jpg') }}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{{ asset('images/content/movie_single/sc1.jpg') }}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{{ asset('images/content/movie_single/sc2.jpg') }}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{{ asset('images/content/movie_single/sc2.jpg') }}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{{ asset('images/content/movie_single/sc3.jpg') }}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{{ asset('images/content/movie_single/sc3.jpg') }}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{{ asset('images/content/movie_single/sc4.jpg') }}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{{ asset('images/content/movie_single/sc4.jpg') }}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{{ asset('images/content/movie_single/sc5.jpg') }}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{{ asset('images/content/movie_single/sc5.jpg') }}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="prs_ms_scene_slider_img prs_ms_scene_slider_img22">
-													<img src="{{ asset('images/content/movie_single/sc6.jpg') }}" alt="scene_img">
-													<div class="prs_ms_scene_img_overlay">	<a href="{{ asset('images/content/movie_single/sc6.jpg') }}" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
-													</div>
-												</div>
-											</div>
 										</div>
 									</div>
 								</div>

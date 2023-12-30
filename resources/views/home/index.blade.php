@@ -267,5 +267,6 @@
 
 @section('script')
 
+	<script src="{{ asset('js/custom.js')}}"></script>
 	<script src="{{ asset('js/custom4.js')}}"></script>
 @endsection

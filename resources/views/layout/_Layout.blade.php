@@ -82,54 +82,6 @@ Author: Webstrot
 									</ul>
 								</li>
 								<li class="parent"><a href="{{ route('lichchieu') }}">Lịch chiếu</a></li>
-								<li class="parent megamenu"><a href="#">video</a>
-									<ul class="lg-submenu prs_navi_video_wrapper">
-										<li>
-											<div class="prs_video_navi_img_main_wrapper">
-												<img src="{{ asset('images/content/vp1.jpg') }}" alt="video_img">
-												<div class="prs_video_navi_overlay_wrapper">	<a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="flaticon-play-button"></i></a>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="prs_video_navi_img_main_wrapper">
-												<img src="{{ asset('images/content/vp2.jpg') }}" alt="video_img">
-												<div class="prs_video_navi_overlay_wrapper">	<a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="flaticon-play-button"></i></a>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="prs_video_navi_img_main_wrapper">
-												<img src="{{ asset('images/content/vp3.jpg') }}" alt="video_img">
-												<div class="prs_video_navi_overlay_wrapper">	<a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="flaticon-play-button"></i></a>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="prs_video_navi_img_main_wrapper">
-												<img src="{{ asset('images/content/vp4.jpg') }}" alt="video_img">
-												<div class="prs_video_navi_overlay_wrapper">	<a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="flaticon-play-button"></i></a>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="prs_video_navi_img_main_wrapper">
-												<img src="{{ asset('images/content/vp5.jpg') }}" alt="video_img">
-												<div class="prs_video_navi_overlay_wrapper">	<a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="flaticon-play-button"></i></a>
-												</div>
-											</div>
-										</li>
-										<li class="hidden-sm">
-											<div class="prs_video_navi_img_main_wrapper">
-												<img src="{{ asset('images/content/vp6.jpg') }}" alt="video_img">
-												<div class="prs_video_navi_overlay_wrapper">	<a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="flaticon-play-button"></i></a>
-												</div>
-											</div>
-										</li>
-									</ul>
-								</li>
-								<li class="parent"><a href="contact.html">Liên hệ</a>
-								</li>
 							</ul>
 						</div>
 						<!-- /dl-menuwrapper -->
@@ -142,11 +94,13 @@ Author: Webstrot
 
                     @if(session()->exists('user_id'))
 					<div class="prs_animate_btn1">
-                        <div class="logo_user">
+                        <div class="logo_user" id="logo_user">
                             <img class="logo_user_img" src="{{ asset('images/' .session('user_img')) }}" alt="">
                         </div>
-						<ul>
-							<li></li>
+						<ul id="individual" class="individual">
+							<li><a href="{{ route('bookinghistory') }}">Lịch sử đặt vé</a></li>
+							<li><a href="#">Cập nhật thông tin</a></li>
+							<li><a href="{{ route('logout') }}">Đăng xuất</a></li>
 						</ul>
 					</div>
                     @else
@@ -160,16 +114,16 @@ Author: Webstrot
 				</div>
 				<div class="product-heading">
 					<div class="con">
-						<select>
-							<option>All Categories</option>
-							<option>Movie</option>
-							<option>Video</option>
-							<option>Music</option>
-							<option>TV-Show</option>
-						</select>
-						<input type="text" placeholder="Search Movie , Video , Music">
-						<button type="submit"><i class="flaticon-tool"></i>
-						</button>
+						<form action="{{ route('moviesearch') }}" method="get">
+                            <select name="category">
+                                <option value="0">tất cả các phim</option>
+                                <option value="1" >phim đang chiếu</option>
+                                <option value="2" >phim sắp chiếu</option>
+                            </select>
+                            <input type="text" placeholder="tìm kiếm phim" name="movie_name">
+                            <button type="submit"><i class="flaticon-tool"></i>
+                            </button>
+                        </form>
 					</div>
 				</div>
 			</div>

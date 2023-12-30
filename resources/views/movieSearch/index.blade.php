@@ -17,18 +17,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="prs_heading_section_wrapper">
-						<h2>Phim đang chiếu</h2>
-					</div>
-				</div>
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="prs_mc_slider_wrapper">
-						<div class="owl-carousel owl-theme">
-                            @foreach($movies as $item)
-                                <div class="item">
-                                    <img class="imgSlidePhim" src="{{asset('images/'.$item->img) }}" alt="about_img">
-                                </div>
-                            @endforeach
-						</div>
+						<h2>tìm kiếm phim</h2>
 					</div>
 				</div>
 			</div>
@@ -82,7 +71,6 @@
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="prs_mcc_right_side_heading_wrapper">
-									<h2>Our Top Movies</h2>
 									<ul class="nav nav-pills">
 										<li class="active"><a data-toggle="pill" href="#grid"><i class="fa fa-th-large"></i></a>
 										</li>
@@ -95,7 +83,10 @@
 								<div class="tab-content">
 									<div id="grid" class="tab-pane fade in active">
 										<div class="row">
-                                            @foreach($movies as $item)
+                                            @if($movies->isEmpty())
+                                                <h3>không tìm thấy tìm phù hợp với phim của bạn tìm kiếm</h3>
+                                            @else
+                                                @foreach($movies as $item)
                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 prs_upcom_slide_first">
                                                     <div class="prs_upcom_movie_box_wrapper prs_mcc_movie_box_wrapper">
                                                         <div class="prs_upcom_movie_img_box">
@@ -128,75 +119,82 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endforeach
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="pager_wrapper gc_blog_pagination">
-													<ul class="pagination">
-														<li><a href="#"><i class="flaticon-left-arrow"></i></a>
-														</li>
-														<li><a href="#">1</a>
-														</li>
-														<li><a href="#">2</a>
-														</li>
-														<li class="prs_third_page"><a href="#">3</a>
-														</li>
-														<li class="hidden-xs"><a href="#">4</a>
-														</li>
-														<li><a href="#"><i class="flaticon-right-arrow"></i></a>
-														</li>
-													</ul>
-												</div>
-											</div>
+                                                @endforeach
+
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="pager_wrapper gc_blog_pagination">
+                                                        <ul class="pagination">
+                                                            <li><a href="#"><i class="flaticon-left-arrow"></i></a>
+                                                            </li>
+                                                            <li><a href="#">1</a>
+                                                            </li>
+                                                            <li><a href="#">2</a>
+                                                            </li>
+                                                            <li class="prs_third_page"><a href="#">3</a>
+                                                            </li>
+                                                            <li class="hidden-xs"><a href="#">4</a>
+                                                            </li>
+                                                            <li><a href="#"><i class="flaticon-right-arrow"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            @endif
 										</div>
 									</div>
 									<div id="list" class="tab-pane fade">
 										<div class="row">
-                                            @foreach($movies as $item)
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="prs_mcc_list_movie_main_wrapper">
-                                                        <div class="prs_mcc_list_movie_img_wrapper">
-                                                            <img src="{{ asset('images/'.$item->img) }}" alt="categoty_img">
-                                                        </div>
-                                                        <div class="prs_mcc_list_movie_img_cont_wrapper">
-                                                            <div class="prs_mcc_list_left_cont_wrapper">
-                                                                <h2>{{ $item->Ten }}</h2>
-                                                                <p>{{ $item->TheLoai }} &nbsp;&nbsp;&nbsp;<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-                                                                </p>
-                                                                <h4>{{ $item->DaoDien }}</h4>
+                                            @if($movies->isEmpty())
+                                                <h4>không tìm thấy tìm phù hợp với phim của bạn tìm kiếm</h4>
+                                            @else
+                                                @foreach($movies as $item)
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="prs_mcc_list_movie_main_wrapper">
+                                                            <div class="prs_mcc_list_movie_img_wrapper">
+                                                                <img src="{{ asset('images/'.$item->img) }}" alt="categoty_img">
                                                             </div>
-                                                            <div class="prs_mcc_list_right_cont_wrapper">	<a href="{{ route('chonchinhanh', $item->Id) }}"><i class="flaticon-cart-of-ecommerce"></i></a>
-                                                            </div>
-                                                            <div class="prs_mcc_list_bottom_cont_wrapper">
-                                                                <p>{{ $item->NoiDung }}</p>
-                                                                <ul>
-                                                                    <li><a href="#">Xem Trailer</a>
-                                                                    </li>
-                                                                    <li><a href="{{ route('movie.details', $item->Id) }}">Xem chi tiet</a>
-                                                                    </li>
-                                                                </ul>
+                                                            <div class="prs_mcc_list_movie_img_cont_wrapper">
+                                                                <div class="prs_mcc_list_left_cont_wrapper">
+                                                                    <h2>{{ $item->Ten }}</h2>
+                                                                    <p>{{ $item->TheLoai }} &nbsp;&nbsp;&nbsp;<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
+                                                                    </p>
+                                                                    <h4>{{ $item->DaoDien }}</h4>
+                                                                </div>
+                                                                <div class="prs_mcc_list_right_cont_wrapper">	<a href="{{ route('chonchinhanh', $item->Id) }}"><i class="flaticon-cart-of-ecommerce"></i></a>
+                                                                </div>
+                                                                <div class="prs_mcc_list_bottom_cont_wrapper">
+                                                                    <p>{{ $item->NoiDung }}</p>
+                                                                    <ul>
+                                                                        <li><a href="#">Xem Trailer</a>
+                                                                        </li>
+                                                                        <li><a href="{{ route('movie.details', $item->Id) }}">Xem chi tiet</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                @endforeach
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="pager_wrapper gc_blog_pagination">
+                                                        <ul class="pagination">
+                                                            <li><a href="#"><i class="flaticon-left-arrow"></i></a>
+                                                            </li>
+                                                            <li><a href="#">1</a>
+                                                            </li>
+                                                            <li><a href="#">2</a>
+                                                            </li>
+                                                            <li class="prs_third_page"><a href="#">3</a>
+                                                            </li>
+                                                            <li class="hidden-xs"><a href="#">4</a>
+                                                            </li>
+                                                            <li><a href="#"><i class="flaticon-right-arrow"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            @endforeach
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="pager_wrapper gc_blog_pagination">
-													<ul class="pagination">
-														<li><a href="#"><i class="flaticon-left-arrow"></i></a>
-														</li>
-														<li><a href="#">1</a>
-														</li>
-														<li><a href="#">2</a>
-														</li>
-														<li class="prs_third_page"><a href="#">3</a>
-														</li>
-														<li class="hidden-xs"><a href="#">4</a>
-														</li>
-														<li><a href="#"><i class="flaticon-right-arrow"></i></a>
-														</li>
-													</ul>
-												</div>
-											</div>
+                                            @endif
+
 										</div>
 									</div>
 								</div>
@@ -247,51 +245,6 @@
 	</div>
 	<!-- prs mc category slidebar End -->
 	<!-- prs theater Slider Start -->
-	<div class="prs_theater_main_slider_wrapper">
-		<div class="prs_theater_img_overlay"></div>
-		<div class="prs_theater_sec_heading_wrapper">
-			<h2>PHIM HÀNG ĐẦU TẠI Rạp</h2>
-		</div>
-		<div class="wrap-album-slider">
-			<ul class="album-slider">
-                @foreach($movies as $item)
-				<li class="album-slider__item">
-					<figure class="album">
-						<div class="prs_upcom_movie_box_wrapper">
-							<div class="prs_upcom_movie_img_box">
-								<img src="{{ asset('images/'.$item->img) }}" alt="movie_img" />
-								<div class="prs_upcom_movie_img_overlay"></div>
-								<div class="prs_upcom_movie_img_btn_wrapper">
-									<ul>
-										<li><a href="#">Xem Trailer</a>
-										</li>
-										<li><a href="{{ route('movie.details', $item->Id) }}">Xem Chi Tiết</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="prs_upcom_movie_content_box">
-								<div class="prs_upcom_movie_content_box_inner">
-									<h2><a href="{{ route('movie.details', $item->Id) }}">{{ $item->Ten }}</a></h2>
-									<p>{{ $item->TheLoai }}</p>	<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-							</div>
-						</div>
-						<!-- End album body -->
-					</figure>
-					<!-- End album -->
-				</li>
-				<!-- End album slider item -->
-                @endforeach
-			</ul>
-			<!-- End slider -->
-		</div>
-	</div>
-	<!-- prs theater Slider End -->
 
 @endsection
 

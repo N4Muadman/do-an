@@ -8354,6 +8354,13 @@ letter-spacing: 1px;
 .text_movie_chon p{
     margin-top: 15px;
 }
+.bookinghistory{
+    margin-top: 50px;
+}
+.bookinghistory h3{
+    text-align: center;
+    padding: 40px;
+}
 .text_informationt{
     font-size: 18px;
     margin-top: 15px;

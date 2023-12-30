@@ -5,11 +5,11 @@
 
 <div class="content-wrapper">
     <div class="page-header">
-        <h3 class="page-title"> Phim đang chiếu </h3>
+        <h3 class="page-title"> Tất cả phim </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Quản lý phim</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Phim đang chiếu</li>
+                <li class="breadcrumb-item active" aria-current="page">Tất cả phim</li>
             </ol>
         </nav>
     </div>
@@ -44,7 +44,7 @@
                                     <td>
                                         <a type="button" href="{{ route('movie.show', $item->Id) }}" class="btn btn-outline-secondary btn-rounded " title="Chi tiết"><i style="margin-top: 30px" class="mdi mdi-alert-octagon text-success"></i></a>
                                         <a href="{{ route('movie.edit', $item->Id) }}" type="button" class="btn btn-danger btn-rounded">Chỉnh Sửa</a>
-                                        <button type="button" onclick="if (confirm('Bạn có muốn đổi danh mục Phim đang chiếu sang Phim dừng chiếu không?') == true) { location.href = '{{ route('movie.changeStatus', $item->Id) }}' }" class="btn btn-warning  btn-rounded">Đổi danh mục</button>
+                                        <button type="button" class="btn btn-warning  btn-rounded">Đổi danh mục</button>
                                     </td>
                                 </tr>
                             @endforeach
