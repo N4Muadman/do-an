@@ -11,14 +11,14 @@
 		<div class="container">
 			<div class="st_calender_tabs">
 				<ul class="nav nav-tabs">
-                    @if(session('khuVuc') == '--- Chọn khu vực ---')
-                        @foreach($showtime->where('PhimId', session('phimid'))->unique('Ngay') as $item)
+                    @if(session('khuVuc') == '--- Tất cả khu vực ---')
+                        @foreach($showtime->unique('Ngay') as $item)
                             <li @if($item->Ngay == session('Ngay')) class="active" @endif>
                                 <a href="{{ route('ngayLC', $item->Id) }}"><span>{{ \Carbon\Carbon::parse($item->Ngay)->format('d') }}</span> <br>{{\Carbon\Carbon::parse($item->Ngay)->format('m')}}</a>
                             </li>
                         @endforeach
                     @else
-                        @foreach($showtime->where('tenKhuvuc', session('khuVuc'))->where('PhimId', session('phimid'))->unique('Ngay') as $item)
+                        @foreach($showtime->where('tenKhuvuc', session('khuVuc'))->unique('Ngay') as $item)
                         <li @if($item->Ngay == session('Ngay')) class="active" @endif>
                             <a href="{{ route('ngayLC', $item->Id) }}"><span>{{ \Carbon\Carbon::parse($item->Ngay)->format('d') }}</span> <br>{{\Carbon\Carbon::parse($item->Ngay)->format('m')}}</a>
                         </li>
@@ -31,7 +31,10 @@
 						<li >
 							<a id="showSubarea" >{{ session('khuVuc') }} </a>
 							<ul id="subarea" class="subarea">
-                                @foreach($showtime->where('Ngay', session('Ngay'))->where('PhimId', session('phimid'))->unique('tenKhuvuc') as $item)
+                                <li>
+                                    <a href="{{ route('TatcakhuvucLC') }}">Tất cả lịch chiếu</a>
+                                </li>
+                                @foreach($showtime->unique('tenKhuvuc') as $item)
                                 <li>
                                     <a href="{{ route('khuvucLC', $item->Id) }}">{{ $item->tenKhuvuc }}</a>
                                 </li>
@@ -56,76 +59,79 @@
 									<div class="tab-pane active">
 										<div class="st_calender_contant_main_wrapper float_left">
                                             <h2>Chọn suất chiếu</h2>
-                                            @if(session('khuVuc') == '--- Chọn khu vực ---')
-                                                @foreach($showtime->where('Ngay', session('Ngay'))->where('PhimId', session('phimid'))->unique('tenChinhanh') as $chinhanh)
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"><i class="fa fa-heart"></i></a>
-                                                        </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>{{ $chinhanh->tenChinhanh }}</h3>
-                                                            <ul>
-                                                                <li>
-                                                                    <img src="{{ asset('images/content/fast-food.png') }}">
-                                                                </li>
-                                                                <li>
-                                                                    <img src="{{ asset('images/content/bill.png') }}">
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            @foreach($showtime->where('Ngay', session('Ngay'))->where('chinhanhId' , $chinhanh->chinhanhId)->where('PhimId', session('phimid'))->unique('GioBatDau') as $item)
-                                                                <li>
-                                                                    <span>
-                                                                    <h4>{{ $item->Gia}}đ</h4>
-                                                                    <p class="asc_pera1">Executive</p>
-                                                                    <p class="asc_pera2">Filling Fast</p>
-                                                                    </span>
-                                                                    <a href="{{ route('gioLC', $item->Id) }}">{{ $item->GioBatDau }}</a>
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                @endforeach
+                                            @if($showtime->isEmpty())
+                                                <h4>Phim bạn vừa chọn chưa có lịch chiếu, vui lòng chọn phim khác</h4>
                                             @else
-                                                @foreach($showtime->where('Ngay', session('Ngay'))->where('tenKhuvuc', session('khuVuc'))->where('PhimId', session('phimid'))->unique('tenChinhanh') as $chinhanh)
-                                                <div class="st_calender_row_cont st_calender_row_cont2 float_left">
-                                                    <div class="st_calender_asc">
-                                                        <div class="st_calen_asc_heart"><a href="#"><i class="fa fa-heart"></i></a>
+                                                @if(session('khuVuc') == '--- Tất cả khu vực ---')
+                                                    @foreach($showtime->where('Ngay', session('Ngay'))->unique('tenChinhanh') as $chinhanh)
+                                                    <div class="st_calender_row_cont st_calender_row_cont2 float_left">
+                                                        <div class="st_calender_asc">
+                                                            <div class="st_calen_asc_heart"><a href="#"><i class="fa fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="st_calen_asc_heart_cont">
+                                                                <h3>{{ $chinhanh->tenChinhanh }}</h3>
+                                                                <ul>
+                                                                    <li>
+                                                                        <img src="{{ asset('images/content/fast-food.png') }}">
+                                                                    </li>
+                                                                    <li>
+                                                                        <img src="{{ asset('images/content/bill.png') }}">
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                        <div class="st_calen_asc_heart_cont">
-                                                            <h3>{{ $chinhanh->tenChinhanh }}</h3>
+                                                        <div class="st_calen_asc_tecket_time_select">
                                                             <ul>
-                                                                <li>
-                                                                    <img src="{{ asset('images/content/fast-food.png') }}">
-                                                                </li>
-                                                                <li>
-                                                                    <img src="{{ asset('images/content/bill.png') }}">
-                                                                </li>
+                                                                @foreach($showtime->where('Ngay', session('Ngay'))->where('chinhanhId' , $chinhanh->chinhanhId)->unique('GioBatDau') as $item)
+                                                                    <li>
+                                                                        <span>
+                                                                        <h4>{{ $item->Gia}}đ</h4>
+                                                                        <p class="asc_pera1">Executive</p>
+                                                                        <p class="asc_pera2">Filling Fast</p>
+                                                                        </span>
+                                                                        <a href="{{ route('gioLC', $item->Id) }}">{{ $item->GioBatDau }}</a>
+                                                                    </li>
+                                                                @endforeach
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="st_calen_asc_tecket_time_select">
-                                                        <ul>
-                                                            @foreach($showtime->where('Ngay', session('Ngay'))->where('tenKhuvuc', session('khuVuc'))->where('PhimId', session('phimid'))->where('chinhanhId' , $chinhanh->chinhanhId)->unique('GioBatDau') as $item)
-                                                                <li>
-                                                                    <span>
-                                                                    <h4>{{ $item->Gia}}đ</h4>
-                                                                    <p class="asc_pera1">Executive</p>
-                                                                    <p class="asc_pera2">Filling Fast</p>
-                                                                    </span>
-                                                                    <a href="{{ route('gioLC', $item->Id) }}">{{ $item->GioBatDau }}</a>
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
+                                                    @endforeach
+                                                @else
+                                                    @foreach($showtime->where('Ngay', session('Ngay'))->where('tenKhuvuc', session('khuVuc'))->unique('tenChinhanh') as $chinhanh)
+                                                    <div class="st_calender_row_cont st_calender_row_cont2 float_left">
+                                                        <div class="st_calender_asc">
+                                                            <div class="st_calen_asc_heart"><a href="#"><i class="fa fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="st_calen_asc_heart_cont">
+                                                                <h3>{{ $chinhanh->tenChinhanh }}</h3>
+                                                                <ul>
+                                                                    <li>
+                                                                        <img src="{{ asset('images/content/fast-food.png') }}">
+                                                                    </li>
+                                                                    <li>
+                                                                        <img src="{{ asset('images/content/bill.png') }}">
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="st_calen_asc_tecket_time_select">
+                                                            <ul>
+                                                                @foreach($showtime->where('Ngay', session('Ngay'))->where('tenKhuvuc', session('khuVuc'))->where('chinhanhId' , $chinhanh->chinhanhId)->unique('GioBatDau') as $item)
+                                                                    <li>
+                                                                        <span>
+                                                                        <h4>{{ $item->Gia}}đ</h4>
+                                                                        <p class="asc_pera1">Executive</p>
+                                                                        <p class="asc_pera2">Filling Fast</p>
+                                                                        </span>
+                                                                        <a href="{{ route('gioLC', $item->Id) }}">{{ $item->GioBatDau }}</a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                @endforeach
+                                                    @endforeach
+                                                @endif
                                             @endif
-
 										</div>
 									</div>
 								</div>

@@ -24,6 +24,7 @@
 @keyframes fadeOut{
     to {
         opacity: 0;
+        display:none;
     }
 }
 .toast_notification + .toast_notification{

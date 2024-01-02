@@ -11,7 +11,7 @@
 		<div class="container">
 			<div class="st_calender_tabs">
 				<ul class="nav nav-tabs">
-                    @if(session('khuVuc') == '--- Chọn khu vực ---')
+                    @if(session('khuVuc') == '--- Tất cả khu vực ---')
                         @foreach($showtime->unique('Ngay') as $item)
                             <li @if($item->Ngay == session('Ngay')) class="active" @endif>
                                 <a href="{{ route('ngay', $item->Id) }}"><span>{{ \Carbon\Carbon::parse($item->Ngay)->format('d') }}</span> <br>{{\Carbon\Carbon::parse($item->Ngay)->format('m')}}</a>
@@ -31,6 +31,9 @@
 						<li >
 							<a id="showSubarea" >{{ session('khuVuc') }} </a>
 							<ul id="subarea" class="subarea">
+                                <li>
+                                    <a href="{{ route('Tatcakhuvuc') }}">Tất cả lịch chiếu</a>
+                                </li>
                                 @foreach($showtime->where('Ngay', session('Ngay'))->unique('tenKhuvuc') as $item)
                                 <li>
                                     <a href="{{ route('khuvuc', $item->Id) }}">{{ $item->tenKhuvuc }}</a>
@@ -56,7 +59,7 @@
 									<div class="tab-pane active">
 										<div class="st_calender_contant_main_wrapper float_left">
                                             <h2>Chọn suất chiếu</h2>
-                                            @if(session('khuVuc') == '--- Chọn khu vực ---')
+                                            @if(session('khuVuc') == '--- Tất cả khu vực ---')
                                                 @foreach($showtime->where('Ngay', session('Ngay'))->unique('tenChinhanh') as $chinhanh)
                                                 <div class="st_calender_row_cont st_calender_row_cont2 float_left">
                                                     <div class="st_calender_asc">

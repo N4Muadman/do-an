@@ -45,6 +45,8 @@ Route::prefix('lich-chieu')->group(function(){
 
     Route::get('area/{id}', [ShowtimeController::class, 'area'])->name('khuvuc');
 
+    Route::get('areaAll', [ShowtimeController::class, 'areaAll'])->name('Tatcakhuvuc');
+
     Route::get('day/{id}', [ShowtimeController::class, 'date'])->name('ngay');
 
     Route::get('time/{id}', [ShowtimeController::class, 'time'])->name('gio');
@@ -61,6 +63,8 @@ Route::prefix('chon-chi-nhanh')->middleware('checkMovie')->group(function(){
     Route::get('day/{id}', [BranchController::class, 'date'])->name('ngayLC');
 
     Route::get('time/{id}', [BranchController::class, 'time'])->name('gioLC');
+
+    Route::get('areaAll', [BranchController::class, 'areaAll'])->name('TatcakhuvucLC');
 
 });
 

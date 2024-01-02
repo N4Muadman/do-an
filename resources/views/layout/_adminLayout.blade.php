@@ -36,8 +36,8 @@
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                <a class="sidebar-brand brand-logo" href="index.html"><img src="{{ asset('admin/assets/images/logo.svg') }}" /></a>
-                <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="{{ asset('admin/assets/images/logo-mini.svg') }}" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo" href="{{ route('admin.dashboard') }}"><img src="{{ asset('admin/assets/images/logo.svg') }}" /></a>
+                <a class="sidebar-brand brand-logo-mini" href="{{ route('admin.dashboard') }}"><img src="{{ asset('admin/assets/images/logo-mini.svg') }}" alt="logo" /></a>
             </div>
             <ul class="nav">
                 <li class="nav-item profile">
@@ -90,30 +90,29 @@
                     </div>
                 </li>
                 <li class="nav-item menu-items">
-                    <a class="nav-link" data-toggle="collapse" href="#movie" aria-expanded="false" aria-controls="movie">
+                    <a class="nav-link collapsed" data-toggle="collapse" href="#phim" aria-expanded="false" aria-controls="movie">
                         <span class="menu-icon">
                             <i class="mdi mdi-movie"></i>
                         </span>
                         <span class="menu-title">Quản Lý Phim</span>
                         <i class="menu-arrow"></i>
                     </a>
-                    <div class="collapse" id="movie">
+                    <div class="collapse " id="movie">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="{{ route('movie.index') }}">Tất cả phim</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('movie.create') }}">Thêm phim mới</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="">Phim Dừng Chiếu</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item menu-items">
-                    <a class="nav-link" data-toggle="collapse" href="#ghe" aria-expanded="false" aria-controls="ghe">
+                    <a class="nav-link collapsed" data-toggle="collapse" href="#lichchieu" aria-expanded="false" aria-controls="showtime">
                         <span class="menu-icon">
                             <i class="mdi mdi-calendar-clock"></i>
                         </span>
                         <span class="menu-title">Quản Lý Lịch Chiếu</span>
                         <i class="menu-arrow"></i>
                     </a>
-                    <div class="collapse" id="ghe">
+                    <div class="collapse" id="showtime">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="{{ route('showtime.index') }}">Tất cả lịch chiếu</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ route('showtime.create') }}">Thêm lịch chiếu</a></li>
@@ -121,14 +120,14 @@
                     </div>
                 </li>
                 <li class="nav-item menu-items">
-                    <a class="nav-link" data-toggle="collapse" href="#room" aria-expanded="false" aria-controls="room">
+                    <a class="nav-link collapsed" data-toggle="collapse" href="#nguoidung" aria-expanded="false" aria-controls="user">
                         <span class="menu-icon">
                             <i class="mdi mdi-home"></i>
                         </span>
                         <span class="menu-title">Quản Lý người dùng</span>
                         <i class="menu-arrow"></i>
                     </a>
-                    <div class="collapse" id="room">
+                    <div class="collapse" id="user">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.user') }}">Tất cả khách hàng</a></li>
                         </ul>

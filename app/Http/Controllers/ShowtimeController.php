@@ -13,13 +13,17 @@ class ShowtimeController extends Controller
             session(['Ngay' => date('Y-m-d')]);
         }
         if(!session()->exists([ 'khuVuc'])){
-            session(['khuVuc' => '--- Chọn khu vực ---']);
+            session(['khuVuc' => '--- Tất cả khu vực ---']);
         }
         return view('showtime.index')->with(['showtime' => $showtime]);
     }
     public function area($id){
         $showtime = view_showtime::findOrFail($id);
         session(['khuVuc' => $showtime->tenKhuvuc,'Ngay' => date('Y-m-d'), 'Gio' => '', 'chinhanhid' => '']);
+        return redirect()->route('lichchieu');
+    }
+    public function areaAll(){
+        session(['khuVuc' => '--- Tất cả khu vực ---']);
         return redirect()->route('lichchieu');
     }
     public function date($id){
